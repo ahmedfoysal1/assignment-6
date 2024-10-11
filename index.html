@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peddy</title>
+    <link rel="shortcut icon" href="images/logo.webp" type="image/x-icon" />
+    <!-- Daisy Ui CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="w-11/12 mx-auto navbar bg-base-100">
+          <div class="navbar-start">
+            <div class="flex items-center">
+              <div>
+                <img class="w-8" src="images/logo.webp" alt="" />
+              </div>
+              <a class="btn btn-ghost text-xl">Peddy</a>
+            </div>
+          </div>
+          <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 text-gray-400">
+              <li><a>Home</a></li>
+              <li><a>Shop</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </div>
+          <div class="text-center navbar-end">
+            <img
+              class="w-8"
+              src="https://img.icons8.com/?size=52&id=11795&format=png"
+              alt=""
+            />
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- section 1 -->
+      <section
+        class="flex flex-col items-center text-center mx-auto w-11/12 space-y-4 mt-7"
+      >
+        <div class="lg:w-1/2 mx-auto space-y-5 lg:space-y-7">
+          <p class="font-bold text-xl text-gray-500">
+            Bringing Families Together ❤️‍🔥
+          </p>
+          <h1 class="w-11/12 text-5xl font-bold">
+            Your Path To Adoption Starts Here
+          </h1>
+          <p class="w-11/12 mx-auto text-xs font-semibold text-gray-500">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a.
+          </p>
+          <button
+            onclick="moveToFooter()"
+            id="btn-see-more"
+            class="btn text-white"
+          >
+            View More
+          </button>
+        </div>
+        <div>
+          <img src="images/pet.webp" alt="" />
+        </div>
+      </section>
+
+      <!-- section 2 -->
+      <section id="adoptBestFriend" class="w-11/12 mx-auto">
+        <div class="text-center space-y-3">
+          <h1 class="font-black text-3xl">Adopt Your Best Friend</h1>
+          <p class="lg:w-1/2 mx-auto text-base text-gray-500">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a.
+          </p>
+        </div>
+      </section>
+      <!-- section 3 -->
+      <section id="btnContainer" class="w-11/12 mx-auto flex justify-evenly gap-5 py-7">
+
+
+      </section>
+
+      <!-- sort section -->
+
+      <div class="w-11/12 mx-auto flex text-center items-center justify-between">
+        <p class="font-bold text-lg">Best Deal For You</p>
+        <button id="sortBtn" class="btn">Sort By Price</button>
+      </div>
+
+      <!-- section 4 -->
+      <span id="loadingSpinner" class=" w-16 flex justify-center mx-auto loading loading-bars loading-lg"></span>
+      <section id="cardContainerSection" class="w-11/12 mx-auto lg:items-start lg:flex justify-between py-10 gap-4 space-y-5 lg:space-y-0">
+        <section id="cardContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        </section>
+        <section id="imageContainer" class="grid grid-cols-2 border rounded-lg p-2 lg:w-1/2 gap-2">
+
+        </section>
+      </section>
+    </main>
+    <footer
+      class="bottom-0 footer bg-base-200 text-base-content p-10 lg:p-20 lg:flex lg:justify-between bg-footer"
+    >
+      <nav>
+        <h6 class="footer-title text-white flex gap-2 text-lg">
+          <img src="images/logo.webp" alt="" />Peddy
+        </h6>
+        <a class="link link-hover text-gray-400">
+          Location: av. Washington 165, NY CA
+        </a>
+        <a class="link link-hover text-gray-400">54003</a>
+        <a class="link link-hover text-gray-400">Phone: +31 85 964 47 25</a>
+        <a class="link link-hover text-gray-400">Email: info@yourdomain.com</a>
+        <a class="link link-hover text-gray-400"
+          >Openings hours: 9.00 AM - 5.00 PM</a
+        >
+      </nav>
+      <nav>
+        <h6 class="footer-title text-white">Usefull Links</h6>
+        <a class="link link-hover text-gray-500">Home</a>
+        <a class="link link-hover text-gray-500">About Us</a>
+        <a class="link link-hover text-gray-500">Animals</a>
+        <a class="link link-hover text-gray-500">Foundation</a>
+        <a class="link link-hover text-gray-500">Contact</a>
+      </nav>
+      <form>
+        <h6 class="footer-title text-white">Drop a Message</h6>
+        <fieldset class="form-control w-64">
+          <div class="flex flex-col gap-2">
+            <input
+              type="text"
+              placeholder="Enter Your Email"
+              class="input input-bordered email-background"
+            />
+            <button class="btn border-none text-white subscribe">
+              Subscribe
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </footer>
+
+    <!-- scripts -->
+    <script src="js/index.js"></script>
+  </body>
+</html>
