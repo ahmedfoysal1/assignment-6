@@ -118,14 +118,15 @@ const displayPetCard = (petCard) => {
       class="rounded-xl" />
   </figure>
   <div class="card-body p-5">
-     <p class="flex gap-1 text-gray-500"><img class="w-7" src="https://img.icons8.com/?size=48&id=afhqPNgpBQkL&format=png" alt="">Breed   : ${card.breed}</p>
-     <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=4p2G9EBQbqA4&format=png" alt=""> Birth  : ${card.date_of_birth}</p>
+  <h1 class="font-black text-2xl py-2">${card.pet_name}</h1>
+     <p class="flex gap-1 text-gray-500"><img class="w-7" src="https://img.icons8.com/?size=48&id=afhqPNgpBQkL&format=png" alt="icon">Breed   : ${card.breed === null || card.breed === undefined || card.breed === '' ? "Didn't Mentioned": `${card.breed}`}</p>
+     <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=4p2G9EBQbqA4&format=png" alt=""> Birth  : ${card.date_of_birth === null || card.date_of_birth === undefined || card.date_of_birth === '' ? "Didn't Mentioned": `${card.date_of_birth}`}</p>
      <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=U3KBnMZtu3fk&format=png" alt=""> Gender :${card.gender}</p>
      <p class="flex gap-1 text-gray-500 border-b-2 pb-2"><img class="w-6" src="https://img.icons8.com/?size=52&id=58437&format=png" alt=""> Price  :${card.price}</p>
     <div class="flex justify-center items-center gap-9 lg:gap-5">
       <button onclick="loadImage('${card.image}')" class="btn btn-sm bg-white"><img class="w-5" src="https://img.icons8.com/?size=48&id=u8MTpAq972MG&format=png" /></button>
       <button class="btn btn-sm bg-white color-btn btnHover">Adopt</button>
-      <button class="btn btn-sm bg-white color-btn btnHover">Details</button>
+      <button onclick="loadDetails(${card.petId})" class="btn btn-sm bg-white color-btn btnHover">Details</button>
     </div>
   </div>
 </div>
@@ -133,6 +134,43 @@ const displayPetCard = (petCard) => {
     petCardContainer.appendChild(div);
   });
 };
+
+//-----------------------------------------------------------pet details modal -----------------------------------------------
+
+//pet details api  fetch
+const loadDetails = async(id) =>{
+  const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
+  const data = await res.json();
+  displayPetDetails(data.petData);
+}
+
+//pet details modal design------------------------------------------------------------------------------------------------
+const displayPetDetails = (details) =>{
+  const modalContainer = document.getElementById('modal-content');
+  modalContainer.innerHTML=`
+  <img class="w-full rounded-lg" src="${details.image}" />
+<h1 class="text-2xl py-2 font-bold">${details.pet_name}</h1>
+
+<div class="flex gap-3 border-b py-3">
+<div class="space-y-2">
+<p class="flex gap-1 text-gray-500"><img class="w-5" src="https://img.icons8.com/?size=48&id=afhqPNgpBQkL&format=png" alt="">Breed : ${details.breed === null || details.breed === undefined || details.breed === '' ? "Didn't Mentioned": `${details.breed}`}</p>
+ <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=U3KBnMZtu3fk&format=png" alt=""> Gender :${details.gender}</p>
+  <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=U3KBnMZtu3fk&format=png" alt=""> vaccinated status :${details.vaccinated_status}</p>
+</div>
+<div class="space-y-2">
+<p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=4p2G9EBQbqA4&format=png" alt=""> Birth  : ${details.date_of_birth === null || details.date_of_birth === undefined || details.date_of_birth === '' ? "Didn't Mentioned": `${details.date_of_birth}`}</p>
+     <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=52&id=58437&format=png" alt=""> Price  :${details.price}</p>
+</div>
+</div>
+
+<div class="space-y-2 pt-3">
+<h1 class="font-bold">Details Information</h1>
+<p class="text-gray-400">${details.pet_details}</p>
+</div>
+  `;
+  document.getElementById('showModal').click();
+}
+
 
 //view more button funtion to ----------------------------------------------------------------------------------------------
 function moveToFooter() {

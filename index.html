@@ -85,29 +85,64 @@
         </div>
       </section>
       <!-- section 3 -->
-      <section id="btnContainer" class="w-11/12 mx-auto flex justify-evenly gap-5 py-7">
-
-
-      </section>
+      <section
+        id="btnContainer"
+        class="w-11/12 mx-auto flex justify-evenly gap-5 py-7"
+      ></section>
 
       <!-- sort section -->
 
-      <div class="w-11/12 mx-auto flex text-center items-center justify-between">
+      <div
+        class="w-11/12 mx-auto flex text-center items-center justify-between"
+      >
         <p class="font-bold text-lg">Best Deal For You</p>
         <button id="sortBtn" class="btn">Sort By Price</button>
       </div>
 
       <!-- section 4 -->
-      <span id="loadingSpinner" class=" w-16 flex justify-center mx-auto loading loading-bars loading-lg"></span>
-      <section id="cardContainerSection" class="w-11/12 mx-auto lg:items-start lg:flex justify-between py-10 gap-4 space-y-5 lg:space-y-0">
-        <section id="cardContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-        </section>
-        <section id="imageContainer" class="grid grid-cols-2 border rounded-lg p-2 lg:w-1/2 gap-2">
-
-        </section>
+      <span
+        id="loadingSpinner"
+        class="w-16 flex justify-center mx-auto loading loading-bars loading-lg"
+      ></span>
+      <section
+        id="cardContainerSection"
+        class="w-11/12 mx-auto lg:items-start lg:flex justify-between py-10 gap-4 space-y-5 lg:space-y-0"
+      >
+        <section
+          id="cardContainer"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        ></section>
+        <section
+          id="imageContainer"
+          class="grid grid-cols-2 border rounded-lg p-2 lg:w-1/2 gap-2"
+        ></section>
       </section>
     </main>
+
+    <button
+      id="showModal"
+      class="btn hidden"
+      onclick="detailsModal.showModal()"
+    >
+      open modal
+    </button>
+    <dialog id="detailsModal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <div id="modal-content">
+          
+        </div>
+        <div class="modal-action">
+          <form method="dialog" class="w-full">
+            <button class="btn w-full border-teal-200 color-btn details-bg">
+              Close
+            </button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- -----------------------------------------------------------------details modal end---------------------------------- -->
+
     <footer
       class="bottom-0 footer bg-base-200 text-base-content p-10 lg:p-20 lg:flex lg:justify-between bg-footer"
     >
