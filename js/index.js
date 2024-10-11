@@ -39,7 +39,7 @@ const displayCategoryWise = (categoryName) => {
       setTimeout(() => {
         document.getElementById("imageContainer").classList.remove("hidden");
         document.getElementById("loadingSpinner").classList.add("hidden");
-        document.getElementById("cardContainerSection").classList.add("hidden");
+        document.getElementById("cardContainerSection").classList.remove("hidden");
         document.getElementById('cardContainer').classList.remove('hidden');
         displayPetCard(data.data);
       }, 2000);
@@ -199,8 +199,9 @@ const displayAdoptModal = (adoptModal) => {
       closeBtn.classList.add('hidden');
       adopted.classList.remove('hidden');
       countdownElement.classList.add('hidden');
-      // modal.style.display= 'none';
-      // detailsModal.closeModal()
+      setTimeout(() => {
+        document.getElementById('adoptModal').close();
+      }, 400);
     }
   }, 1000);
   countdownElement.classList.remove('hidden');
