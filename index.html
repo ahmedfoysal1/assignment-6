@@ -129,7 +129,7 @@
     <dialog id="detailsModal" class="modal modal-bottom sm:modal-middle">
       <div class="modal-box">
         <div id="modal-content">
-          
+
         </div>
         <div class="modal-action">
           <form method="dialog" class="w-full">
@@ -142,7 +142,27 @@
     </dialog>
 
     <!-- -----------------------------------------------------------------details modal end---------------------------------- -->
+    <!-- ------------------------------------------------------------------adopt modal start--------------------------------- -->
+    <button id="adoptModalButton" class="hidden btn" onclick="adoptModal.showModal()">open modal</button>
+    <dialog id="adoptModal" class="modal">
+        <div class="modal-box flex flex-col justify-center items-center text-center space-y-2">
+            <div>
+              <img src="https://img.icons8.com/?size=96&id=q6BlPrJZmxHV&format=png" alt="">
+            </div>
+            <h1 class="text-4xl font-bold">Congrates</h1>
+            <p>Adoption Proccess is Start For Your Pet</p>
+            <span id="countdown" class="text-3xl font-bold">3</span>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button id="adoptModalClose"  class="btn">Close</button>
+                <button id="adoptedBtn" class="hidden btn"> <img class="w-6" src="https://img.icons8.com/?size=96&id=VFaz7MkjAiu0&format=png" /> Adopted </button>
+              </form>
+            </div>
+          </div>
+    </dialog>
 
+    <!-- ---------------------------------------------------adopt modal end------------------------------------------------------- -->
     <footer
       class="bottom-0 footer bg-base-200 text-base-content p-10 lg:p-20 lg:flex lg:justify-between bg-footer"
     >

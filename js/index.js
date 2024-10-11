@@ -125,7 +125,7 @@ const displayPetCard = (petCard) => {
      <p class="flex gap-1 text-gray-500 border-b-2 pb-2"><img class="w-6" src="https://img.icons8.com/?size=52&id=58437&format=png" alt=""> Price  :${card.price}</p>
     <div class="flex justify-center items-center gap-9 lg:gap-5">
       <button onclick="loadImage('${card.image}')" class="btn btn-sm bg-white"><img class="w-5" src="https://img.icons8.com/?size=48&id=u8MTpAq972MG&format=png" /></button>
-      <button class="btn btn-sm bg-white color-btn btnHover">Adopt</button>
+      <button onclick="displayAdoptModal()" class="btn btn-sm bg-white color-btn btnHover">Adopt</button>
       <button onclick="loadDetails(${card.petId})" class="btn btn-sm bg-white color-btn btnHover">Details</button>
     </div>
   </div>
@@ -137,14 +137,14 @@ const displayPetCard = (petCard) => {
 
 //-----------------------------------------------------------pet details modal -----------------------------------------------
 
-//pet details api  fetch
+//pet details api  fetch -------------------------------------------------------
 const loadDetails = async(id) =>{
   const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
   const data = await res.json();
   displayPetDetails(data.petData);
 }
 
-//pet details modal design------------------------------------------------------------------------------------------------
+//pet details modal design and display  --------------------------------------------------------------------------------------------
 const displayPetDetails = (details) =>{
   const modalContainer = document.getElementById('modal-content');
   modalContainer.innerHTML=`
@@ -171,6 +171,35 @@ const displayPetDetails = (details) =>{
   document.getElementById('showModal').click();
 }
 
+
+//pet adopt modal display --------------------------------------------------------
+const displayAdoptModal = (adoptModal) => {
+  console.log(adoptModal);
+  const closeBtn = document.getElementById('adoptModalClose');
+  const adopted = document.getElementById('adoptedBtn');
+  const countdownElement = document.getElementById("countdown");
+  // const modal = document.getElementById('adoptModal');
+  let countdown = 3;
+  countdownElement.textContent = countdown;
+  const countdownInterval = setInterval(() => {
+    countdown--;
+    countdownElement.textContent = countdown;
+    if (countdown === 0) {
+      clearInterval(countdownInterval);
+      closeBtn.classList.add('hidden');
+      adopted.classList.remove('hidden');
+      countdownElement.classList.add('hidden');
+      // modal.style.display= 'none';
+      // detailsModal.closeModal()
+    }
+  }, 1000);
+  countdownElement.classList.remove('hidden');
+  closeBtn.classList.remove('hidden');
+  adopted.classList.add('hidden');
+  // adopted.innerHTML= 'close';
+
+  document.getElementById("adoptModalButton").click();
+};
 
 //view more button funtion to ----------------------------------------------------------------------------------------------
 function moveToFooter() {
