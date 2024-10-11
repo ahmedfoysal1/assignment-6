@@ -13,4 +13,3 @@
 ## ES6 features
     *1 - backTick
     *2 - arrow function
-    *3 -

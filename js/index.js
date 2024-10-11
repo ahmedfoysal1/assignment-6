@@ -32,7 +32,17 @@ const displayCategoryWise = (categoryName) => {
       //on clic active class
       const activeButton = document.getElementById(`btn-${categoryName}`);
       activeButton.classList.add("active");
-      displayPetCard(data.data);
+      document.getElementById("loadingSpinner").classList.remove("hidden");
+      document.getElementById("cardContainerSection").classList.add("hidden");
+      document.getElementById("imageContainer").classList.add("hidden");
+      document.getElementById('cardContainer').classList.add('hidden');
+      setTimeout(() => {
+        document.getElementById("imageContainer").classList.remove("hidden");
+        document.getElementById("loadingSpinner").classList.add("hidden");
+        document.getElementById("cardContainerSection").classList.add("hidden");
+        document.getElementById('cardContainer').classList.remove('hidden');
+        displayPetCard(data.data);
+      }, 2000);
     })
     .card((err) => console.log(err));
 };
@@ -77,7 +87,7 @@ const loadAllPetsData = async () => {
   });
 };
 
-//display image if like button click
+//display side image if like button click
 const loadImage = (image) => {
   const imageContainer = document.getElementById("imageContainer");
   const div = document.createElement("div");
@@ -119,10 +129,10 @@ const displayPetCard = (petCard) => {
   </figure>
   <div class="card-body p-5">
   <h1 class="font-black text-2xl py-2">${card.pet_name}</h1>
-     <p class="flex gap-1 text-gray-500"><img class="w-7" src="https://img.icons8.com/?size=48&id=afhqPNgpBQkL&format=png" alt="icon">Breed   : ${card.breed === null || card.breed === undefined || card.breed === '' ? "Didn't Mentioned": `${card.breed}`}</p>
-     <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=4p2G9EBQbqA4&format=png" alt=""> Birth  : ${card.date_of_birth === null || card.date_of_birth === undefined || card.date_of_birth === '' ? "Didn't Mentioned": `${card.date_of_birth}`}</p>
-     <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=U3KBnMZtu3fk&format=png" alt=""> Gender :${card.gender}</p>
-     <p class="flex gap-1 text-gray-500 border-b-2 pb-2"><img class="w-6" src="https://img.icons8.com/?size=52&id=58437&format=png" alt=""> Price  :${card.price}</p>
+     <p class="flex gap-1 text-gray-500"><img class="w-7" src="https://img.icons8.com/?size=48&id=afhqPNgpBQkL&format=png" alt="icon">Breed   : ${card.breed === null || card.breed === undefined || card.breed === '' ? "Not Specified": `${card.breed}`}</p>
+     <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=4p2G9EBQbqA4&format=png" alt=""> Birth  : ${card.date_of_birth === null || card.date_of_birth === undefined || card.date_of_birth === '' ? "Unknown": `${card.date_of_birth}`}</p>
+     <p class="flex gap-1 text-gray-500"><img class="w-6" src="https://img.icons8.com/?size=48&id=U3KBnMZtu3fk&format=png" alt=""> Gender :${card.gender === null || card.gender === undefined || card.gender === '' ? "Unspecified": `${card.gender}`}</p>
+     <p class="flex gap-1 text-gray-500 border-b-2 pb-2"><img class="w-6" src="https://img.icons8.com/?size=52&id=58437&format=png" alt=""> Price  :${card.price === null || card.price === undefined || card.price === '' ? "TBA": `${card.price}`}</p>
     <div class="flex justify-center items-center gap-9 lg:gap-5">
       <button onclick="loadImage('${card.image}')" class="btn btn-sm bg-white"><img class="w-5" src="https://img.icons8.com/?size=48&id=u8MTpAq972MG&format=png" /></button>
       <button onclick="displayAdoptModal()" class="btn btn-sm bg-white color-btn btnHover">Adopt</button>
